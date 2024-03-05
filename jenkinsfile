@@ -2,11 +2,16 @@ pipeline {
     agent any
 
     stages {
+        stage('Ant Info') {
+            steps {
+                sh 'ant -version'
+            }
+        }
         stage('Build') {
             steps {
                 echo 'Building...'
                 withAnt(installation: "LocalAnt") {
-                    powershell 'ant info'
+                    bat 'ant build'
                 }
             }
         }
