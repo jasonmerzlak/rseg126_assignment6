@@ -4,13 +4,15 @@ pipeline {
     stages {
         stage('Ant Info') {
             steps {
-                sh 'ant -version'
+                withAnt(installation: "LocalAnt", jdk: "LocalJDK") {
+                    bat 'ant -version'
+                }
             }
         }
         stage('Build') {
             steps {
                 echo 'Building...'
-                withAnt(installation: "LocalAnt") {
+                withAnt(installation: "LocalAnt", jdk: "LocalJDK") {
                     bat 'ant build'
                 }
             }
@@ -23,8 +25,8 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
-                withAnt(installation: "LocalAnt") {
-                    bat "ant run"
+                withAnt(installation: "LocalAnt", jdk: "LocalJDK") {
+                    bat 'ant run'
                 } 
             }
         }
