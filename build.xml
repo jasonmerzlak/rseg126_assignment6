@@ -3,6 +3,7 @@
 	<property name="build.dir" value="build"/>
 	<property name="class.path" value="edu/brandeis/rseg126/assignment6/jasonmerzlak"/>
 	<property name="package.name" value="edu.brandeis.rseg126.assignment6.jasonmerzlak"/>
+	<property name="test_package.name" value="edu.brandeis.rseg126.assignment6.jasonmerzlak.test"/>
 	<property name="class.name" value="Assignment6"/>
 	
 	<target name="info">
@@ -15,9 +16,20 @@
 	<target name="build" depends="info" description="Compile source tree java files">
 		<mkdir dir="${build.dir}"/>
 		<echo>Building...</echo>
-		<javac srcdir="${src.dir}" destdir="${build.dir}" includeantruntime="false"/>
+		<javac srcdir="${src.dir}" destdir="${build.dir}" includeantruntime="false" classpath="junit.jar"/>
 	</target>
    
+	<target name="test" depends="build" description="Run a series of tests.">
+    	<junit printsummary="yes">
+			<classpath>
+				<pathelement location="build" />
+			</classpath>
+			<test name="edu.brandeis.rseg126.assignment6.jasonmerzlak.test.Assignment6Tests" haltonfailure="no" outfile="build/result">
+				<formatter type="xml" />
+			</test>
+		</junit>
+	</target>
+
 	<target name="clean" depends="info" description="Clean output directories">
 		<echo>Cleaning...</echo>
 		<delete>

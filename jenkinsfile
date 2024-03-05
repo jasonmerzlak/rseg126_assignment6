@@ -2,10 +2,10 @@ pipeline {
     agent any
 
     stages {
-        stage('Ant Info') {
+        stage('Information') {
             steps {
                 withAnt(installation: "LocalAnt", jdk: "LocalJDK") {
-                    bat 'ant -version'
+                    bat 'ant info'
                 }
             }
         }
@@ -20,13 +20,16 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Testing..'
+                withAnt(installation: "LocalAnt", jdk: "LocalJDK") {
+                    bat 'ant test'
+                }
+                junit 'build/result.xml'
             }
         }
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
                 withAnt(installation: "LocalAnt", jdk: "LocalJDK") {
-                    bat 'ant run'
                 } 
             }
         }
