@@ -23,7 +23,7 @@ pipeline {
                 withAnt(installation: "LocalAnt", jdk: "LocalJDK") {
                     bat 'ant test'
                 }
-                junit 'build/result.xml'
+                junit testResults: 'build/results.xml', skipPublishingChecks: true
             }
         }
         stage('Deploy') {

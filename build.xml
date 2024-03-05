@@ -25,7 +25,7 @@
 				<pathelement location="junit.jar" />
 				<pathelement location="build" />
 			</classpath>
-			<test name="edu.brandeis.rseg126.assignment6.jasonmerzlak.test.Assignment6Tests" haltonfailure="no" outfile="build/result">
+			<test name="edu.brandeis.rseg126.assignment6.jasonmerzlak.test.Assignment6Tests" haltonfailure="no" outfile="build/results">
 				<formatter type="xml" />
 			</test>
 		</junit>
