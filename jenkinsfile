@@ -8,8 +8,8 @@ pipeline {
                 git branch: 'main', credentialsId: 'zideaaediz', url: 'https://github.com/jasonmerzlak/rseg126_assignment6'
                 echo 'Building...'
                 withAnt(installation: "LocalAnt") {
-                    bat "ant"
-                }                
+                    bat "ant build"
+                }
             }
         }
         stage('Test') {
@@ -20,6 +20,9 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
+                withAnt(installation: "LocalAnt") {
+                    bat "ant run"
+                } 
             }
         }
     }
