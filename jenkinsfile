@@ -6,7 +6,10 @@ pipeline {
             steps {
                 echo 'Building...'
                 withAnt(installation: "LocalAnt") {
-                    bat(script: "ant", returnStdout: true).readLines()
+                    script {
+                        winCompName = bat(script: "ant", returnStdout: true).readLines()
+                    }
+                    echo "${winCompName}"
                 }
             }
         }
