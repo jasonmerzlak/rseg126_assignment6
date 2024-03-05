@@ -1,0 +1,36 @@
+<project name="Assignment 6 - CI/CD" default="run">
+	<property name="src.dir" value="src"/>
+	<property name="build.dir" value="build"/>
+	<property name="class.path" value="edu/brandeis/rseg126/assignment6/jasonmerzlak"/>
+	<property name="package.name" value="edu.brandeis.rseg126.assignment6.jasonmerzlak"/>
+	<property name="class.name" value="Assignment6"/>
+	
+	<target name="info">
+		<echo>Assignment 6: CI/CD</echo>
+		<echo>RSEG126</echo>
+		<echo>Jason Merzlak</echo>
+        <tstamp/>
+ 	</target>
+	
+	<target name="build" depends="info" description="Compile source tree java files">
+		<mkdir dir="${build.dir}"/>
+		<echo>Building...</echo>
+		<javac srcdir="${src.dir}" destdir="${build.dir}" includeantruntime="false"/>
+	</target>
+   
+	<target name="clean" depends="info" description="Clean output directories">
+		<echo>Cleaning...</echo>
+		<delete>
+			<fileset dir="${build.dir}">
+				<include name="**/*.class"/>
+ 			</fileset>
+  		</delete>
+	</target>
+
+	<target name="run" depends="build" description="Run the program">
+		<echo>Running...</echo>
+		<java fork="true" classname="${package.name}.${class.name}">
+			<classpath path="${build.dir}"/>
+		</java>
+	</target>
+</project>
