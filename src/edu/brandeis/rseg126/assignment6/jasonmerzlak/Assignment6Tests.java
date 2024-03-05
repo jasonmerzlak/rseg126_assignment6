@@ -23,4 +23,9 @@ public class Assignment6Tests {
     public void testNumber2() {
         assertEquals(Assignment6.prime_sieve(2).count(), 1);
     }
+
+    @Test
+    public void testNumber8() {
+        assertEquals(Assignment6.prime_sieve(11).count(), 5);
+    }
 }
