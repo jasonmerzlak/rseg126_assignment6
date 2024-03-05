@@ -6,7 +6,7 @@ pipeline {
             steps {
                 echo 'Building...'
                 withAnt(installation: "LocalAnt") {
-                    bat 'call ant info'
+                    powershell 'ant info'
                 }
             }
         }
