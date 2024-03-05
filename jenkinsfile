@@ -26,12 +26,5 @@ pipeline {
                 junit testResults: 'build/results.xml', skipPublishingChecks: true
             }
         }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
-                withAnt(installation: "LocalAnt", jdk: "LocalJDK") {
-                } 
-            }
-        }
     }
 }
