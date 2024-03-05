@@ -9,7 +9,7 @@ pipeline {
                 echo 'Building...'
                 withAnt(installation: "LocalAnt") {
                     script {
-                        winCompName = bat(script: "ant", returnStdout: true).readLines()
+                        winCompName = bat(script: "ant build", returnStdout: true).readLines()
                     }
                     echo "${winCompName}"
                 }
