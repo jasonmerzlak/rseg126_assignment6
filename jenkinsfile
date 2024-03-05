@@ -7,12 +7,8 @@ pipeline {
                 echo 'Syncing...'
                 git branch: 'main', credentialsId: 'zideaaediz', url: 'https://github.com/jasonmerzlak/rseg126_assignment6'
                 echo 'Building...'
-                withAnt(installation: 'myinstall') {
-                    if (isUnix()) {
-                    sh "ant"
-                    } else {
+                withAnt() {
                     bat "ant"
-                    }
                 }                
             }
         }
