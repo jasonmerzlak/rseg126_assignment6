@@ -6,7 +6,7 @@ pipeline {
             steps {
                 echo 'Building...'
                 withAnt(installation: "LocalAnt") {
-                    bat 'ant info'
+                    bat 'ant -f build.xml info'
                 }
             }
         }
